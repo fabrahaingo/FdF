@@ -12,7 +12,8 @@
 
 NAME =		fdf
 
-SRC =		
+SRC =		srcs/parse_map.c \
+			srcs/put_error.c
 
 OBJ =		$(SRC:.c=.o)
 
@@ -20,7 +21,7 @@ FLAG =		-Wall -Werror -Wextra -g
 
 INC =		includes/
 
-MAIN =		main.c
+MAIN =		srcs/main.c
 
 all :		$(NAME)
 

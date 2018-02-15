@@ -15,37 +15,42 @@
 int main(int argc, char **argv)
 {
 	int **parsed_map;
-	int fd;
 	int i;
 	int j;
+	int done;
+	int fd;
 	char buf[BUFF_SIZE + 1];
+	char *full_map;
 
 	parsed_map = NULL;
 	i = 0;
-	j = -1;
-	if (argc != 2)
-	{
-		if (argc > 2)
-			ft_putendl("Too much arguments given");
-		else
-			ft_putendl("FdF needs a map in order to work");
+	full_map = NULL;
+	done = 1;
+	fd = 0;
+	if (put_error(argc, argv[1]) == -1)
 		return (-1);
-	}
-	fd = open(argv[1], O_RDONLY);
-	if (fd == -1)
+	while (done)
 	{
-		ft_putendl("This type of file is not supported");
-		return (-1);
+		done = read(fd, buf, BUFF_SIZE);
+		if (done == -1)
+		{
+			ft_putstr("This map is not supported");
+			return (-1);
+		}
+		full_map = ft_strjoin(full_map, buf);
+		free(buf);
+		if (done == 0)
+			break ;
 	}
-	read(fd, buf, BUFF_SIZE);
-	parsed_map = parse_map(buf);
+	parsed_map = parse_map(full_map);
 	if (!parsed_map)
 	{
-		ft_putendl("This map is not supported");
+		ft_putendl("This map is not well formated");
 		return (-1);
 	}
-	if (parsed_map)
+	else
 	{
+		j = -1;
 		while (parsed_map[i])
 		{
 			while (parsed_map[i][++j])

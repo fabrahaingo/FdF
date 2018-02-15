@@ -1,22 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   fdf.h                                              :+:      :+:    :+:   */
+/*   put_error.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: frahaing <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/02/15 16:16:25 by frahaing          #+#    #+#             */
-/*   Updated: 2018/02/15 16:16:27 by frahaing         ###   ########.fr       */
+/*   Created: 2018/02/15 18:25:02 by frahaing          #+#    #+#             */
+/*   Updated: 2018/02/15 18:25:04 by frahaing         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FDF_H
-# define FDF_H
+#include "../includes/fdf.h"
 
-#include <unistd.h>
-#include "../libft/libft.h"
+int put_error(int argc, char *argv)
+{
+	int fd;
 
-int **parse_map(char *char_map);
-int put_error(int argc, char *argv);
-
-#endif
+	fd = 0;
+	if (argc != 2)
+	{
+		if (argc > 2)
+			ft_putendl("Too much arguments given");
+		else
+			ft_putendl("FdF needs a map in order to work");
+		return (-1);
+	}
+	fd = open(&argv[1], O_RDONLY);
+	if (fd == -1)
+	{
+		ft_putendl("This type of file is not supported");
+		return (-1);
+	}
+	return (fd);
+}
