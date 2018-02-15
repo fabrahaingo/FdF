@@ -1,19 +1,38 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   fdf.h                                              :+:      :+:    :+:   */
+/*   parse_map.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: frahaing <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/02/15 16:16:25 by frahaing          #+#    #+#             */
-/*   Updated: 2018/02/15 16:16:27 by frahaing         ###   ########.fr       */
+/*   Created: 2018/02/15 17:47:51 by frahaing          #+#    #+#             */
+/*   Updated: 2018/02/15 17:47:52 by frahaing         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FDF_H
-# define FDF_H
+#include "../includes/fdf.h"
 
-#include <unistd.h>
-#include ""
+int *map_size(char *char_map, int **int_map)
+{
+	int **int_map;
+	int i;
+	int j;
 
-#endif
+	i = 0;
+	j = 0;
+	while (char_map[i])
+	{
+		if ()
+	}
+}
+
+int **parse_map(char *char_map)
+{
+	char **int_map;
+
+	int_map = NULL;
+	int_map = map_size(char_map, int_map);
+	if (!int_map)
+		return (NULL);
+
+}
