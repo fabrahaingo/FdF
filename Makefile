@@ -14,7 +14,8 @@ NAME =		fdf
 
 SRC =		srcs/parse_map.c \
 			srcs/put_error.c \
-			srcs/get_fullmap.c
+			srcs/get_fullmap.c \
+			srcs/rendering/rendering.c
 
 OBJ =		$(SRC:.c=.o)
 
@@ -28,7 +29,8 @@ all :		$(NAME)
 
 $(NAME) : $(OBJ)
 			@$(MAKE) -C libft/ all
-			@gcc -o $(NAME) $(FLAG) $(MAIN) $(SRC) -I $(INC) libft/libft.a
+			@gcc -o $(NAME) $(FLAG) $(MAIN) $(SRC) -I $(INC) libft/libft.a -L \
+			/usr/local/lib/ -lmlx -framework OpenGL -framework AppKit
 
 %.o: %.c
 			@gcc -c $< -o $@ $(FLAG)

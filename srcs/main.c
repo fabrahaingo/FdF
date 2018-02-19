@@ -12,29 +12,33 @@
 
 #include "../includes/fdf.h"
 
-int main(int argc, char **argv)
+static int	count_lines(char *full_map)
 {
-	int **parsed_map;
 	int i;
-	int done;
-	int fd;
-	char *full_map;
+	int count;
 
-	i = 0;
-	done = 1;
-	full_map = "\0";
+	i = -1;
+	count = 0;
+	while (full_map[++i])
+		if (full_map[i] == '\n')
+			count++;
+	return (count);
+}
+
+int			main(int argc, char **argv)
+{
+	int		**parsed_map;
+	int		fd;
+	int		line_nb;
+	char	*full_map;
+
+	full_map = NULL;
 	if ((fd = put_error(argc, argv)) == -1)
 		return (-1);
 	full_map = get_fullmap(fd);
+	line_nb = count_lines(full_map);
 	parsed_map = fill_fullmap(full_map);
-	if (!parsed_map)
-	{
-		ft_putendl("This map could no be parsed");
+	if (rendering(parsed_map, argv[1], line_nb) == -1)
 		return (-1);
-	}
-	else
-	{
-		return (0);
-	}
 	return (0);
 }

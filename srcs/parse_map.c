@@ -59,6 +59,8 @@ int **fill_fullmap(char *char_map)
 	y = 0;
 	int_map = NULL;
 	int_map = map_size(char_map, int_map);
+	if (!char_map)
+		return (NULL);
 	while (char_map[i])
 	{
 		if (ft_isdigit(char_map[i]))

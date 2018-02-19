@@ -13,11 +13,12 @@
 #ifndef FDF_H
 # define FDF_H
 
-#include <unistd.h>
+#include "mlx.h"
 #include "../libft/libft.h"
 
 int		**fill_fullmap(char *char_map);
 int		put_error(int argc, char **argv);
 char	*get_fullmap(int fd);
+int		rendering(int **map, char *file_name, int line_nb);
 
 #endif
