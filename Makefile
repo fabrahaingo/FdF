@@ -13,7 +13,8 @@
 NAME =		fdf
 
 SRC =		srcs/parse_map.c \
-			srcs/put_error.c
+			srcs/put_error.c \
+			srcs/get_fullmap.c
 
 OBJ =		$(SRC:.c=.o)
 

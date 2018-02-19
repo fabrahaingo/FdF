@@ -16,7 +16,8 @@
 #include <unistd.h>
 #include "../libft/libft.h"
 
-int **parse_map(char *char_map);
-int put_error(int argc, char *argv);
+int		**fill_fullmap(char *char_map);
+int		put_error(int argc, char **argv);
+char	*get_fullmap(int fd);
 
 #endif

@@ -12,7 +12,7 @@
 
 #include "../includes/fdf.h"
 
-int put_error(int argc, char *argv)
+int put_error(int argc, char **argv)
 {
 	int fd;
 
@@ -25,10 +25,10 @@ int put_error(int argc, char *argv)
 			ft_putendl("FdF needs a map in order to work");
 		return (-1);
 	}
-	fd = open(&argv[1], O_RDONLY);
+	fd = open(argv[1], O_RDONLY);
 	if (fd == -1)
 	{
-		ft_putendl("This type of file is not supported");
+		ft_putendl("This file does not exist");
 		return (-1);
 	}
 	return (fd);
