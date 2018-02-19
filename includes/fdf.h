@@ -21,4 +21,12 @@ int		put_error(int argc, char **argv);
 char	*get_fullmap(int fd);
 int		rendering(int **map, char *file_name, int line_nb);
 
+struct t_ptr
+{
+	void	*mlx_ptr;
+	void	*win_ptr;
+	void	*img_ptr;
+	char	*img_str;
+};
+
 #endif
