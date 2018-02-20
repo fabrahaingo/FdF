@@ -16,14 +16,15 @@ static int **map_size(char *char_map, int **int_map)
 {
 	int i;
 	int j;
+	int k;
 
 	i = -1;
-	j = 0;
+	k = 0;
 	while (char_map[++i])
 		if (char_map[i] == '\n')
-			j++;
-	int_map = (int **)malloc(sizeof(int *) * j + 1);
-	int_map[j] = NULL;
+			k++;
+	int_map = (int **)ft_memalloc(sizeof(int *) * k);
+	int_map[k] = NULL;
 	i = -1;
 	j = 0;
 	while (char_map[++i] != '\n')
@@ -42,8 +43,8 @@ static int **map_size(char *char_map, int **int_map)
 		}
 	}
 	i = -1;
-	while (int_map[++i])
-		int_map[i] = (int *)malloc(sizeof(int) * j);
+	while (++i < j)
+		int_map[i] = (int *)ft_memalloc(sizeof(int) * j);
 	return (int_map);
 }
 

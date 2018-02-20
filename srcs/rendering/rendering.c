@@ -26,34 +26,28 @@ static void fill_pixel(char *img_str, int x, int y, int color, int line_nb)
 	img_str[i] = (char)(color);
 }
 
-int		rendering(int **map, char *file_name, int line_nb)
+int		rendering(char *file_name, int line_nb, t_all *all)
 {
-	void	*mlx_ptr;
-	void	*win_ptr;
-	void	*img_ptr;
-	char	*img_str;
-	int		bpp;
-	int		s_l;
-	int		endian;
 	int		x;
 	int		y;
 
-	bpp = 0;
-	s_l = 0;
-	endian = 0;
+
+	all->mlx->bpp = 0;
+	all->mlx->s_l = 0;
+	all->mlx->endian = 0;
 	x = 750;
 	y = 500;
-	if (!map)
+	if (!all->map->int_map)
 	{
 		ft_putendl("The map could not be parsed");
 		return (-1);
 	}
-	mlx_ptr = mlx_init();
-	win_ptr = mlx_new_window(mlx_ptr, x, y, file_name);
-	img_ptr = mlx_new_image(mlx_ptr, x, y);
-	img_str = mlx_get_data_addr(img_ptr, &(bpp), &(s_l), &(endian));
-	fill_pixel(img_str, 250, 250, 255255255, line_nb);
-	mlx_put_image_to_window(mlx_ptr, win_ptr, img_ptr, 0, 0);
-	mlx_loop(mlx_ptr);
+	all->mlx->mlx_ptr = mlx_init();
+	all->mlx->win_ptr = mlx_new_window(all->mlx->mlx_ptr, x, y, file_name);
+	all->mlx->img_ptr = mlx_new_image(all->mlx->mlx_ptr, x, y);
+	all->mlx->img_str = mlx_get_data_addr(all->mlx->img_ptr, &(all->mlx->bpp), &(all->mlx->s_l), &(all->mlx->endian));
+	fill_pixel(all->mlx->img_str, 250, 250, 255255255, line_nb);
+	mlx_put_image_to_window(all->mlx->mlx_ptr, all->mlx->win_ptr, all->mlx->img_ptr, 0, 0);
+	mlx_loop(all->mlx->mlx_ptr);
 	return(0);
 }
