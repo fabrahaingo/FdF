@@ -13,7 +13,12 @@
 #ifndef FDF_H
 # define FDF_H
 
+# define MLX all->mlx
+# define MAP all->map
+# define PIX all->pix;
+
 #include "mlx.h"
+#include <math.h>
 #include "../libft/libft.h"
 
 typedef struct	s_mlx
@@ -31,18 +36,40 @@ typedef struct	s_map
 {
 	int height;
 	int width;
+	int columns;
+	int lines;
 	int **int_map;
 }				t_map;
 
+typedef struct	s_fpix
+{
+	int	x;
+	int	y;
+	int	color;
+}				t_fpix;
+
+typedef struct	s_pix
+{
+	int		x;
+	int		y;
+	int		z;
+	int		color;
+	t_fpix	fpix;
+}				t_pix;
+
 typedef struct	s_all
 {
-	t_mlx	*mlx;
-	t_map	*map;
+	t_mlx	mlx;
+	t_map	map;
+	t_pix	pix;
 }				t_all;
 
 int		**fill_fullmap(char *char_map);
 int		put_error(int argc, char **argv);
 char	*get_fullmap(int fd);
 int		rendering(char *file_name, int line_nb, t_all *all);
+void	fill_pixel(char *img_str, int x, int y, int color, int line_nb);
+void	draw_line(t_pix	pix1, t_pix pix2, t_all all);
+void	modify_pix(t_pix pix, t_fpix fpix, int pos);
 
 #endif

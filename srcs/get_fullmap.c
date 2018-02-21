@@ -30,13 +30,13 @@ char	*get_fullmap(int fd)
 			str = ft_strdup(buf);
 		else
 			str = ft_strjoin(tmp, buf);
-		ft_strdel(&tmp);
+		//ft_strdel(&tmp);
 		tmp = str;
 		str = ft_strjoin(tmp, "\n");
-		ft_strdel(&tmp);
+		//ft_strdel(&tmp);
 		i = i + 1;
 	}
 	res = ft_strdup(str);
-	ft_strdel(&str);
+//	ft_strdel(&str);
 	return (res);
 }

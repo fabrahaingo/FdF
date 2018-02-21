@@ -15,7 +15,10 @@ NAME =		fdf
 SRC =		srcs/parse_map.c \
 			srcs/put_error.c \
 			srcs/get_fullmap.c \
-			srcs/rendering/rendering.c
+			srcs/rendering/rendering.c \
+			srcs/rendering/draw_line.c \
+			srcs/rendering/fill_pixel.c \
+			srcs/rendering/modify_pix.c
 
 OBJ =		$(SRC:.c=.o)
 
