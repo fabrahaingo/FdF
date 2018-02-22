@@ -13,9 +13,9 @@
 #ifndef FDF_H
 # define FDF_H
 
-# define MLX all->mlx
-# define MAP all->map
-# define PIX all->pix;
+# define MLX all.mlx
+# define MAP all.map
+# define PIX all.pix;
 
 #include "mlx.h"
 #include <math.h>
@@ -67,9 +67,8 @@ typedef struct	s_all
 int		**fill_fullmap(char *char_map);
 int		put_error(int argc, char **argv);
 char	*get_fullmap(int fd);
-int		rendering(char *file_name, int line_nb, t_all *all);
-void	fill_pixel(char *img_str, int x, int y, int color, int line_nb);
-void	draw_line(t_pix	pix1, t_pix pix2, t_all all);
-void	modify_pix(t_pix pix, t_fpix fpix, int pos);
+void	fill_pixel(char *img_str, int x, int y, int color, t_map map);
+void	displayfdf(t_all all, char *name);
+void	drawline(t_fpix pix1, t_fpix pix2, t_all all);
 
 #endif
