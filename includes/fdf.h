@@ -67,7 +67,6 @@ typedef struct	s_all
 int		**fill_fullmap(char *char_map);
 int		put_error(int argc, char **argv);
 char	*get_fullmap(int fd);
-void	fill_pixel(char *img_str, int x, int y, int color, t_map map);
 void	displayfdf(t_all all, char *name);
 void	drawline(t_fpix pix1, t_fpix pix2, t_all all);
 

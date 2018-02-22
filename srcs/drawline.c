@@ -54,8 +54,8 @@ void	drawline(t_fpix pix1, t_fpix pix2, t_all all)
 		while (pix1.y != pix2.y)
 		{
 			mlx_pixel_put(MLX.mlx_ptr, MLX.win_ptr, pix1.x, pix1.y, pix1.color);
+			pix1.x = pix1.x + (nearbyint(coefx) * signx);
 			coefx = ft_coefx(pix1, pix2);
-			pix1.x = pix1.x + coefx * signx;
 			pix1.y = pix1.y + 1;
 		}
 	}
@@ -64,9 +64,9 @@ void	drawline(t_fpix pix1, t_fpix pix2, t_all all)
 		while (pix1.x != pix2.x)
 		{
 			mlx_pixel_put(MLX.mlx_ptr, MLX.win_ptr, pix1.x, pix1.y, pix1.color);
-			coefy = ft_coefy(pix1, pix2);
 			pix1.x = pix1.x + 1;
-			pix1.y = pix1.y + coefy * signy;
+			pix1.y = pix1.y + (nearbyint(coefy) * signy);
+			coefy = ft_coefy(pix1, pix2);
 		}
 	}
 }
