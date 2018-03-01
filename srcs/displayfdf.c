@@ -20,8 +20,8 @@ void displayfdf(t_all all, char *name)
 	pix1.x = 250;
 	pix1.y = 250;
 	pix1.color = 0xFFFFFFF;
-	pix2.x = 500;
-	pix2.y = 400;
+	pix2.x = 400;
+	pix2.y = 500;
 	pix2.color = 0xFFFFFFF;
 	MLX.mlx_ptr = mlx_init();
 	MLX.win_ptr = mlx_new_window(MLX.mlx_ptr, MAP.width, MAP.height, name);
